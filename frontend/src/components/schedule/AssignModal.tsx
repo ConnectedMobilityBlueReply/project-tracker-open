@@ -9,6 +9,7 @@ import {
 import type { Project, ProjectTask, TaskType } from '../../types';
 import { TASK_LABELS } from '../../types';
 import { isPhaseless, resolveAssignTask } from '../../lib/phasesMode';
+import { isPlannableProject } from '../../lib/plannableProject';
 import { allocationCeiling } from '../../lib/scheduleRows';
 import { daysToHours, hoursToDays } from '../../lib/units';
 import { Button } from '../ui/button';
@@ -86,8 +87,9 @@ export default function AssignModal({ open, target, onClose, onSaved }: Props) {
   useEffect(() => {
     if (!open) return;
     // getProjects() esclude già i progetti virtuali per default.
+    // Progetti conclusi o lavorati a consuntivo: il backend rifiuta la pianificazione, non si offrono.
     getProjects()
-      .then(all => setProjects(all.map(({ id, name, uses_phases, is_virtual }) => ({ id, name, uses_phases, is_virtual }))))
+      .then(all => setProjects(all.filter(isPlannableProject).map(({ id, name, uses_phases, is_virtual }) => ({ id, name, uses_phases, is_virtual }))))
       .catch((err: Error) => setError(err.message || 'Caricamento dei progetti non riuscito'));
   }, [open]);
 

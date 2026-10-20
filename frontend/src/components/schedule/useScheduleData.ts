@@ -7,6 +7,7 @@ import type { ScheduleFilters, SortKey } from '../../lib/scheduleModel';
 import { personRows, projectRows } from '../../lib/scheduleRows';
 import type { ScheduleRowModel } from '../../lib/scheduleRows';
 import { addDaysIso } from '../../lib/capacity';
+import { isPlannableProject } from '../../lib/plannableProject';
 import type { Density, ScheduleView, Zoom } from './ScheduleToolbar';
 
 const WEEKS_SHOWN = 8;
@@ -103,7 +104,7 @@ export function useScheduleData(canWrite: boolean) {
     if (view !== 'project') return;
     // getProjects() esclude già i progetti virtuali per default.
     getProjects()
-      .then(all => setProjects(all.map(project => ({ id: project.id, name: project.name }))))
+      .then(all => setProjects(all.filter(isPlannableProject).map(project => ({ id: project.id, name: project.name }))))
       .catch(() => setProjects([]));
   }, [view]);
 
