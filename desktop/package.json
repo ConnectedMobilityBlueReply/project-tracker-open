@@ -1,7 +1,7 @@
 {
   "name": "project-tracker-desktop",
   "productName": "Project Tracker",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "description": "Project Tracker desktop",
   "author": "Project Tracker contributors",
   "private": true,
