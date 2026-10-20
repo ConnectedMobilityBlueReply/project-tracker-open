@@ -12,6 +12,7 @@ import { Progress } from '@/components/ui/progress';
 import { EmptyState, ErrorBanner, LoadingState } from '@/components/app/StateMessages';
 import { PageHeader } from '@/components/app/PageHeader';
 import { consumptionTone } from '@/lib/statusTone';
+import { formatDays } from '@/lib/units';
 import {
   Table,
   TableBody,
@@ -45,7 +46,7 @@ const emptyMovementForm = (): MovementFormState => ({
 
 function formatGiornate(value: number): string {
   const sign = value > 0 ? '+' : '';
-  return `${sign}${value}gg`;
+  return `${sign}${formatDays(value)}gg`;
 }
 
 type MovementField = keyof MovementFormState;
@@ -252,15 +253,15 @@ export default function Basket() {
                 <div className="flex items-center gap-6 text-right tabular-nums">
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Totale</p>
-                    <p className="text-sm font-semibold text-foreground">{b.totale}gg</p>
+                    <p className="text-sm font-semibold text-foreground">{formatDays(b.totale)}gg</p>
                   </div>
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Erogato</p>
-                    <p className="text-sm font-semibold text-foreground">{b.erogato}gg</p>
+                    <p className="text-sm font-semibold text-foreground">{formatDays(b.erogato)}gg</p>
                   </div>
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Residuo</p>
-                    <p className={`text-lg font-semibold ${over ? 'text-destructive' : 'text-foreground'}`}>{b.residuo}gg</p>
+                    <p className={`text-lg font-semibold ${over ? 'text-destructive' : 'text-foreground'}`}>{formatDays(b.residuo)}gg</p>
                   </div>
                 </div>
               </button>
@@ -281,7 +282,7 @@ export default function Basket() {
                                 <span className="text-xs text-muted-foreground">— stima intera del progetto</span>
                               )}
                             </div>
-                            <span className="text-sm font-medium tabular-nums text-foreground shrink-0">-{lp.consumo}gg</span>
+                            <span className="text-sm font-medium tabular-nums text-foreground shrink-0">-{formatDays(lp.consumo)}gg</span>
                           </div>
                         ))}
                       </div>
