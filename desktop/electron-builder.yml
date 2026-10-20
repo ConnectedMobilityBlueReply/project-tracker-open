@@ -1,4 +1,4 @@
-appId: org.projecttracker.desktop
+appId: com.connectedmobilityai.projecttracker
 productName: Project Tracker
 electronFuses:
   runAsNode: false

@@ -9,7 +9,7 @@ import { registerAlertSurface } from './alertSurface.mjs';
 import { DEFAULT_TITLE_BAR_COLORS, sanitizeTitleBarColors, TITLE_BAR_HEIGHT } from './titleBar.mjs';
 import { startAutoUpdate } from './updater.mjs';
 
-const APP_ID = 'org.projecttracker.desktop';
+const APP_ID = 'com.connectedmobilityai.projecttracker';
 // L'origin API dell'app pacchettizzata arriva dal build (electron-builder extraMetadata.apiOrigin, variabile API_ORIGIN);
 // in sviluppo si sceglie il backend con PT_API_ORIGIN.
 function packagedApiOrigin() {
