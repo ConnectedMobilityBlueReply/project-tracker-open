@@ -14,7 +14,7 @@ const APP_ID = 'com.connectedmobilityai.projecttracker';
 // in sviluppo si sceglie il backend con PT_API_ORIGIN.
 function packagedApiOrigin() {
   const { apiOrigin: origin } = JSON.parse(readFileSync(path.join(app.getAppPath(), 'package.json'), 'utf8'));
-  if (!origin) throw new Error('apiOrigin mancante in package.json: impostare API_ORIGIN al build');
+  if (!URL.canParse(origin ?? '')) throw new Error(`apiOrigin non valido in package.json: ${origin}`);
   return origin;
 }
 let apiOrigin;

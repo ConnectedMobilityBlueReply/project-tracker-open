@@ -126,12 +126,13 @@ jobs:
             echo "ERRORE: file APPLE_API_KEY mancante o vuoto per la notarizzazione Mac"
             exit 1
           fi
-          npx electron-builder ${{ matrix.builder_args }} --publish never
+          npx electron-builder ${{ matrix.builder_args }} --publish never -c.extraMetadata.apiOrigin="$API_ORIGIN"
 
       - name: Packaging Windows (non firmato)
         if: runner.os == 'Windows'
         working-directory: desktop
-        run: npx electron-builder ${{ matrix.builder_args }} --publish never
+        shell: bash
+        run: npx electron-builder ${{ matrix.builder_args }} --publish never -c.extraMetadata.apiOrigin="$API_ORIGIN"
 
       - name: Verifica pacchetto
         shell: bash
@@ -141,6 +142,7 @@ jobs:
               app="desktop/release/mac-universal/Project Tracker.app"
               app_update="desktop/release/mac-universal/Project Tracker.app/Contents/Resources/app-update.yml"
               web_index="desktop/release/mac-universal/Project Tracker.app/Contents/Resources/web/index.html"
+              app_asar="desktop/release/mac-universal/Project Tracker.app/Contents/Resources/app.asar"
               if ! codesign --verify --deep --strict --verbose=2 "$app"; then
                 echo "ERRORE: verifica della firma Mac fallita"
                 exit 1
@@ -157,6 +159,7 @@ jobs:
             Windows)
               app_update="desktop/release/win-unpacked/resources/app-update.yml"
               web_index="desktop/release/win-unpacked/resources/web/index.html"
+              app_asar="desktop/release/win-unpacked/resources/app.asar"
               ;;
             *)
               echo "ERRORE: sistema operativo non previsto per la verifica del pacchetto: $RUNNER_OS"
@@ -171,6 +174,16 @@ jobs:
 
           if ! grep -Fqx "url: $UPDATE_URL" "$app_update"; then
             echo "ERRORE: $app_update non contiene la riga attesa: url: $UPDATE_URL"
+            exit 1
+          fi
+
+          # extraMetadata non espande ${env.*}: senza questo controllo l'app parte con un origin letterale invalido.
+          root="$PWD"
+          tmp="$(mktemp -d)"
+          (cd "$tmp" && "$root/desktop/node_modules/.bin/asar" extract-file "$root/$app_asar" package.json)
+          packaged_origin="$(sed -n 's/.*"apiOrigin": *"\([^"]*\)".*/\1/p' "$tmp/package.json")"
+          if [[ "$packaged_origin" != "$API_ORIGIN" ]]; then
+            echo "ERRORE: apiOrigin nel pacchetto ($packaged_origin) diverso da API_ORIGIN ($API_ORIGIN)"
             exit 1
           fi
 

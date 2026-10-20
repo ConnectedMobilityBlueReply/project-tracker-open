@@ -36,5 +36,3 @@ nsis:
 publish:
   provider: generic
   url: ${env.UPDATE_URL}
-extraMetadata:
-  apiOrigin: ${env.API_ORIGIN}
