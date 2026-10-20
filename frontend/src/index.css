@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "./styles/koala.css";
+@import "tw-animate-css";
+@import "./styles/trackline.css";
+
+/* Geist per tutto il testo (UI, body, titoli), Geist Mono per i `font-mono`; asset importati in main.tsx. */
+/* Title bar dell'app desktop (Electron): 0 nel browser. 40px = TITLE_BAR_HEIGHT in desktop/src/titleBar.mjs. */
+:root {
+  --titlebar-height: 0px;
+}
+
+:root[data-desktop] {
+  --titlebar-height: 40px;
+}
+
+:root[data-desktop] body {
+  padding-top: var(--titlebar-height);
+}
+
+@utility h-app {
+  height: calc(100dvh - var(--titlebar-height));
+}
+
+@utility min-h-app {
+  min-height: calc(100dvh - var(--titlebar-height));
+}
+
+:root {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono-face: "Geist Mono Variable", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}

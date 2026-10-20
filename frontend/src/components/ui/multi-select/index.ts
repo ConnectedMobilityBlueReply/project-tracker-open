@@ -1,0 +1,18 @@
+export {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectValue,
+  MultiSelectContent,
+  MultiSelectItem,
+  MultiSelectSwitchItem,
+  MultiSelectGroup,
+  MultiSelectLabel,
+  MultiSelectSeparator,
+  multiSelectVariants,
+  type MultiSelectProps,
+  type MultiSelectTriggerProps,
+  type MultiSelectValueProps,
+  type MultiSelectContentProps,
+  type MultiSelectItemProps,
+  type MultiSelectSwitchItemProps,
+} from "./multi-select"

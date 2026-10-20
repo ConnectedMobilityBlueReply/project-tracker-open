@@ -1,0 +1,40 @@
+appId: org.projecttracker.desktop
+productName: Project Tracker
+electronFuses:
+  runAsNode: false
+  enableNodeOptionsEnvironmentVariable: false
+  enableNodeCliInspectArguments: false
+  enableCookieEncryption: true
+  onlyLoadAppFromAsar: true
+  enableEmbeddedAsarIntegrityValidation: true
+directories:
+  output: release
+  buildResources: build
+files:
+  - src/**/*
+  - "!src/**/*.test.mjs"
+  - package.json
+extraResources:
+  - from: ../frontend/dist
+    to: web
+mac:
+  target:
+    - target: dmg
+      arch: [universal]
+    - target: zip
+      arch: [universal]
+  category: public.app-category.productivity
+  hardenedRuntime: true
+  notarize: true
+  artifactName: Project-Tracker-${version}-mac.${ext}
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+nsis:
+  artifactName: Project-Tracker-Setup-${version}.${ext}
+publish:
+  provider: generic
+  url: ${env.UPDATE_URL}
+extraMetadata:
+  apiOrigin: ${env.API_ORIGIN}

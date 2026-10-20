@@ -1,0 +1,191 @@
+/*
+   Override sul tema Koala `light`. Valori campionati dal reference (vedi piano).
+   Gli hex vivono solo qui: i componenti usano i ruoli token.
+*/
+:root {
+  /* Superfici della shell: fallback neutri per i temi non curati. */
+  --panel: var(--background);
+  --topbar: var(--muted);
+  --search-field: var(--muted);
+  --surface-soft: var(--muted);
+  --chip: var(--muted);
+  --chip-active: color-mix(in oklab, var(--foreground) 16%, var(--background));
+  --chip-active-foreground: var(--foreground);
+}
+
+/* Tema light: viola morbido, sidebar chiara (su canvas, via fallback :root). */
+:root:not(.dark) {
+  --canvas: #eeeef0;
+  --panel: #ffffff;
+  --topbar: #f6f6f8;
+  --search-field: #f6f6f8;
+  --surface-soft: #f6f6f8;
+  --chip: #ecebf0;
+  --chip-active: #e7e3fa;
+  --chip-active-foreground: var(--brand-strong);
+
+  /* Accent viola morbido: testo bianco su #7467cf = 4,58:1 (AA). Non schiarire. */
+  --brand: #7467cf;
+  --brand-foreground: #ffffff;
+  --primary: var(--brand);
+  --primary-foreground: #ffffff;
+  --ring: var(--brand);
+  --pill-purple: #f0edfe;
+  --brand-tile: #7467cf;
+
+  /* Chip di stato pieni: il testo bianco sulle tinte base non passa AA (blu 2.71, verde 2.22, ambra 2.13);
+     le varianti -strong sì (6.35, 5.42, 7.74). */
+  --status-ink: #ffffff;
+  --status-blue: var(--info-strong);
+  --status-green: var(--success-strong);
+  --status-amber: var(--warning-strong);
+  --status-red: var(--destructive-strong);
+  --status-orange: var(--orange);
+  --status-purple: var(--purple);
+  --status-neutral: var(--muted-foreground);
+}
+
+/* Il track del Progress dichiara --progress-track da sé (classe utility): serve una regola non layered. */
+:root:not(.dark) [data-slot="progress-track"] {
+  --progress-track: #edecf2;
+}
+
+.dark {
+  /* Indaco più chiaro: il testo primary resta AA su superfici scure. Inchiostro scuro sul fill: bianco su #7c80f5 è 3.35:1. */
+  --primary: #7c80f5;
+  --primary-foreground: #13151f;
+  --ring: #7c80f5;
+  /* Link: Koala li deriva da --brand, ma #4b50e7 su fondo scuro è ~3.4:1. */
+  --link: #7c80f5;
+
+  /* Chip di stato in scuro: inchiostro scuro su tinte chiare (6.3–11.0), bianco fallirebbe (1.65–2.89). */
+  --status-ink: #13151f;
+  --status-blue: var(--info);
+  --status-green: var(--success);
+  --status-amber: var(--warning);
+  --status-red: var(--destructive);
+  --status-orange: var(--orange);
+  --status-purple: var(--purple);
+  --status-neutral: var(--muted-foreground);
+}
+
+:root {
+  --radius: 0.5rem;
+  --card-radius: var(--radius);
+  --stripe-highlight: rgb(255 255 255 / 0.35);
+
+  /* Accento Koala (CTA primarie, link, ring-brand): indaco al posto dell'arancio di default.
+     Uguale nei due temi come in Koala; bianco su #4b50e7 = 5.83:1. */
+  --brand: #4b50e7;
+
+  /* Ruoli delle superfici sidebar usati dai componenti applicativi. */
+  --sidebar: var(--canvas);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Dati: strisce e barre dei widget. */
+  --data-blue: #3b82f6;
+  --data-blue-soft: #60a5fa;
+  --data-orange: #f97316;
+  --data-orange-soft: #fb923c;
+  --data-green: #22c55e;
+  --data-green-soft: #4ade80;
+  --data-purple: #8b5cf6;
+  --data-gray: #9ca3af;
+
+  /* Pill timeline e banner di stato. */
+  --pill-blue: #f1f5fd;
+  --pill-purple: #f6f2fd;
+  --pill-green: #edf7f1;
+  --pill-orange: #fffaf5;
+  --banner-success: #e3f7ee;
+  --delta-success: #eefbf2;
+  --brand-tile: #4b50e7;
+
+  /* Ruoli chart usati dai grafici esistenti. */
+  --chart-1: var(--data-blue);
+  --chart-2: var(--data-orange);
+  --chart-3: var(--data-green);
+  --chart-4: var(--brand-tile);
+  --chart-5: var(--data-purple);
+  --chart-6: var(--data-gray);
+
+  /* Schedule: palette barre progetto quando `projects.color` è null. */
+  --schedule-project-1: oklch(0.546 0.215 262.9);
+  --schedule-project-2: oklch(0.541 0.247 293.0);
+  --schedule-project-3: oklch(0.592 0.218 0.6);
+  --schedule-project-4: oklch(0.577 0.215 27.3);
+  --schedule-project-5: oklch(0.646 0.194 41.1);
+  --schedule-project-6: oklch(0.681 0.142 75.8);
+  --schedule-project-7: oklch(0.627 0.17 149.2);
+  --schedule-project-8: oklch(0.6 0.104 184.7);
+  --schedule-project-9: oklch(0.609 0.111 221.7);
+  --schedule-project-10: oklch(0.511 0.23 277.0);
+
+  /* Assenze: tratteggio neutro traslucido. */
+  --schedule-timeoff-hatch: repeating-linear-gradient(45deg, oklch(0.554 0.041 257.4 / 0.28) 0 6px, transparent 6px 12px);
+}
+
+@theme inline {
+  --radius-card: var(--card-radius);
+  --font-display: var(--font-heading);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-data-blue: var(--data-blue);
+  --color-data-orange: var(--data-orange);
+  --color-data-green: var(--data-green);
+  --color-pill-blue: var(--pill-blue);
+  --color-pill-purple: var(--pill-purple);
+  --color-pill-green: var(--pill-green);
+  --color-pill-orange: var(--pill-orange);
+  --color-banner-success: var(--banner-success);
+  --color-delta-success: var(--delta-success);
+  --color-brand-tile: var(--brand-tile);
+  --color-surface-soft: var(--surface-soft);
+  --color-chip: var(--chip);
+  --color-chip-active: var(--chip-active);
+  --color-chip-active-foreground: var(--chip-active-foreground);
+  --color-panel: var(--panel);
+  --color-topbar: var(--topbar);
+  --color-search-field: var(--search-field);
+  --color-status-ink: var(--status-ink);
+  --color-status-blue: var(--status-blue);
+  --color-status-green: var(--status-green);
+  --color-status-amber: var(--status-amber);
+  --color-status-red: var(--status-red);
+  --color-status-orange: var(--status-orange);
+  --color-status-purple: var(--status-purple);
+  --color-status-neutral: var(--status-neutral);
+}
+
+@custom-variant data-horizontal (&:where([data-orientation="horizontal"]));
+@custom-variant data-vertical (&:where([data-orientation="vertical"]));
+
+body {
+  min-width: 20rem;
+  min-height: 100dvh;
+}
+
+@layer base {
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}

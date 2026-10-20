@@ -1,0 +1,25 @@
+export {
+  InputRoot,
+  InputField,
+  InputLabel,
+  InputHint,
+  InputPrefix,
+  InputSuffix,
+  InputPrefixLabel,
+  InputSuffixButton,
+  PasswordInput,
+  inputVariants,
+  type InputRootProps,
+  type InputFieldProps,
+  type InputLabelProps,
+  type InputHintProps,
+  type InputPrefixProps,
+  type InputSuffixProps,
+  type InputPrefixLabelProps,
+  type InputSuffixButtonProps,
+  type PasswordInputProps,
+} from "./input"
+
+export { NumberInput, type NumberInputProps } from "./number-input"
+
+export { Input } from './compat';

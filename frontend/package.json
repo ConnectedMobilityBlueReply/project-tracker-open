@@ -1,0 +1,49 @@
+{
+  "name": "project-tracker-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test:timeline": "node --test src/pages/timelineTeamWeeklyModel.test.mjs src/lib/timelineGeometry.test.mjs src/lib/timelineBars.test.mjs src/lib/overlayGuards.test.mjs",
+    "test:workspace": "node --test src/workspace/workspaceState.test.mjs",
+    "test:navigation": "node --test src/components/layout/navigation.test.mjs",
+    "test:auth": "node --test src/auth/sessionRefresh.test.mjs src/auth/apiFlow.test.mjs src/auth/routeGuard.test.mjs src/auth/routeAccess.test.mjs src/auth/activeTeam.test.mjs src/auth/teamHeader.test.mjs",
+    "test:foundations": "npm run test:workspace && npm run test:navigation && node --test src/lib/validation.test.mjs src/lib/units.test.mjs src/lib/inputClassName.test.mjs src/lib/workingHours.test.mjs src/components/ui/select/selectValue.test.mjs src/styles/tokens.test.mjs src/lib/themeMigration.test.mjs src/lib/statusTone.test.mjs src/lib/projectProgress.test.mjs src/lib/breadcrumbs.test.mjs src/lib/people.test.mjs src/lib/dashboardModel.test.mjs src/lib/mieiTaskGroups.test.mjs src/lib/csv.test.mjs src/lib/planningModel.test.mjs src/lib/desktopBridge.test.mjs src/lib/autosaveQueue.test.mjs src/lib/projectConfigModel.test.mjs src/lib/phasesMode.test.mjs src/lib/tmBilling.test.mjs src/lib/teamValidation.test.mjs src/lib/buModel.test.mjs src/lib/updateStatusView.test.mjs src/lib/projectFilters.test.mjs src/lib/projectCreateForm.test.mjs src/lib/wbsForm.test.mjs",
+    "test:migration": "node --test src/migration.test.mjs",
+    "test:holidays": "node --test src/lib/holidays.test.mjs",
+    "test:ui-migration": "node --test src/components/ui/uiMigration.test.mjs",
+    "test:schedule": "node --test src/lib/holidays.test.mjs src/lib/capacity.test.mjs src/lib/scheduleModel.test.mjs src/lib/scheduleRows.test.mjs src/lib/consuntivazioneGrid.test.mjs src/lib/consuntivazioneRange.test.mjs src/lib/consuntivazioneFilter.test.mjs src/lib/consuntivazionePayload.test.mjs src/lib/consuntivazioneOptimistic.test.mjs src/lib/gridNav.test.mjs src/lib/scheduleBacklog.test.mjs src/lib/scheduleRange.test.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@date-fns/tz": "^1.5.0",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "next-themes": "^0.4.6",
+    "radix-ui": "^1.6.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^6.22.0",
+    "recharts": "^2.12.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwind-variants": "^3.3.0",
+    "tippy.js": "^6.3.7",
+    "tw-animate-css": "^1.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "playwright": "^1.60.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.0"
+  }
+}

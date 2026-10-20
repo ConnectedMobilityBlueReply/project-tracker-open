@@ -1,0 +1,17 @@
+export {
+  TextareaRoot,
+  TextareaField,
+  TextareaFooter,
+  TextareaCount,
+  TextareaLabel,
+  TextareaHint,
+  textareaVariants,
+  type TextareaRootProps,
+  type TextareaFieldProps,
+  type TextareaFooterProps,
+  type TextareaCountProps,
+  type TextareaLabelProps,
+  type TextareaHintProps,
+} from "./textarea"
+
+export { Textarea } from './compat';
