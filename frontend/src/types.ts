@@ -781,6 +781,44 @@ export interface BuKpi {
   breakdown: BuBreakdown[];
 }
 
+// --- Dashboard planning BU (/api/bu/investment, /api/bu/efficiency) ---
+
+export interface BuInvestmentRow {
+  person_id: number;
+  person_name: string;
+  project_id: number;
+  project_name: string;
+  team_id: number;
+  team_name: string;
+  done_days_lifetime: number;
+  todo_days_lifetime: number;
+  done_days_period: number;
+  todo_days_period: number;
+}
+
+export interface BuTkSaving {
+  project_id: number;
+  project_name: string;
+  team_id: number;
+  team_name: string;
+  status: string;
+  estimate_days: number;
+  actual_days: number;
+  saved_days: number;
+  end_date: string;
+}
+
+export interface BuTmOverlap {
+  person_id: number;
+  person_name: string;
+  overlap_days: number;
+}
+
+export interface BuEfficiency {
+  tk_closed: BuTkSaving[];
+  tm_overlap: BuTmOverlap[];
+}
+
 /** Body di PUT /projects/:id/phases. */
 export type SetPhasesRequest =
   | { uses_phases: true }

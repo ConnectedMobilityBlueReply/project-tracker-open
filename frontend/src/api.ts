@@ -1,5 +1,5 @@
 import { createSessionRefresher, fetchWithSessionRefresh } from './auth/sessionRefresh.ts';
-import type { Person, Project, ProjectTask, TaskAllocation, TimeEntry, TimelineEntry, WeekGroup, KPIData, GlobalKPI, SelectableProject, AllocationWeekEntry, WbsItem, WbsPersonTask, WbsPlanningItem, WbsProgressPatch, ProjectEvData, AlertsData, TaskDependency, DashboardEconomicResponse, DashboardMonthlyRow, DashboardProject, DashboardWbsStatus, OptionValue, OptionKind, PartnerAllocation, ProjectExtension, BasketSummary, BasketMovement, AuthMeResponse, AuthLoginResponse, AuthChangePasswordResponse, ScheduleData, BacklogItem, TimeOffEntry, TimeOffType, RangeRow, TmProject, AppRole, PlatformPerson, TeamMember, TeamSummary, TeamInvite, BuPerson, BuProjectAllocation, BuTeam, BuProject, BuKpi, SetPhasesRequest} from './types.ts';
+import type { Person, Project, ProjectTask, TaskAllocation, TimeEntry, TimelineEntry, WeekGroup, KPIData, GlobalKPI, SelectableProject, AllocationWeekEntry, WbsItem, WbsPersonTask, WbsPlanningItem, WbsProgressPatch, ProjectEvData, AlertsData, TaskDependency, DashboardEconomicResponse, DashboardMonthlyRow, DashboardProject, DashboardWbsStatus, OptionValue, OptionKind, PartnerAllocation, ProjectExtension, BasketSummary, BasketMovement, AuthMeResponse, AuthLoginResponse, AuthChangePasswordResponse, ScheduleData, BacklogItem, TimeOffEntry, TimeOffType, RangeRow, TmProject, AppRole, PlatformPerson, TeamMember, TeamSummary, TeamInvite, BuPerson, BuProjectAllocation, BuTeam, BuProject, BuKpi, BuInvestmentRow, BuEfficiency, SetPhasesRequest} from './types.ts';
 import { buildHeaders, isTeamAccessError, TEAM_ACCESS_EVENT } from './auth/teamHeader.ts';
 
 const BASE = '/api';
@@ -335,3 +335,7 @@ export const getBuPersonAllocations = (personId: number, from: string, weeks: nu
 export const getBuTeams = () => request<BuTeam[]>('/bu/teams');
 export const getBuProjects = () => request<BuProject[]>('/bu/projects');
 export const getBuKpi = () => request<BuKpi>('/bu/kpi');
+export const getBuInvestment = (from: string, to: string) =>
+  request<BuInvestmentRow[]>(`/bu/investment?from=${from}&to=${to}`);
+export const getBuEfficiency = (from: string, to: string) =>
+  request<BuEfficiency>(`/bu/efficiency?from=${from}&to=${to}`);

@@ -141,7 +141,7 @@ test('la voce Business Unit non compare nella navigazione del singolo team, nemm
   }
 });
 
-test('Tutti i Team: sezione unica con Team, Planning, Progetti, KPI ed economia e poi Business Unit', () => {
+test('Tutti i Team: sezione unica con Team, Planning, Progetti, KPI ed economia, Business Unit e Dashboard planning', () => {
   const sections = navigationSectionsForRole('pm', { businessUnit: true, allTeams: true });
   assert.deepEqual(sections.map(section => section.label), ['Tutti i Team']);
   assert.deepEqual(
@@ -152,11 +152,12 @@ test('Tutti i Team: sezione unica con Team, Planning, Progetti, KPI ed economia 
       ['Progetti', '/tutti/progetti'],
       ['KPI ed economia', '/tutti/kpi'],
       ['Business Unit', '/business-unit'],
+      ['Dashboard planning', '/tutti/dashboard'],
     ],
   );
   assert.deepEqual(sections[0].items, ALL_TEAMS_NAVIGATION);
   // Niente "Il mio lavoro" né voci di amministrazione in questa modalità.
-  assert.equal(navigationForRole('admin', { businessUnit: true, allTeams: true, platformAdmin: true }).length, 5);
+  assert.equal(navigationForRole('admin', { businessUnit: true, allTeams: true, platformAdmin: true }).length, 6);
   assert.equal(ALL_TEAMS_LANDING, '/business-unit');
 });
 

@@ -34,6 +34,7 @@ test('la tabella esplicita conserva il ruolo minimo di ogni rotta', () => {
     '/pianificazione': 'member',
     '/allocazioni': 'member',
     '/admin/dashboard': 'pm',
+    '/tutti/dashboard': 'pm',
     '/basket': 'pm',
     '/time-material': 'pm',
     '/admin/team': 'admin',
@@ -135,8 +136,8 @@ test('Business Unit: il ruolo minimo è pm (il flag manager è un secondo contro
   assert.equal(minimumRoleForPath('/business-unit'), 'pm');
 });
 
-test('Tutti i Team: le quattro pagine aggregate richiedono ruolo pm', () => {
-  for (const path of ['/tutti/team', '/tutti/planning', '/tutti/progetti', '/tutti/kpi']) {
+test('Tutti i Team: le cinque pagine aggregate richiedono ruolo pm', () => {
+  for (const path of ['/tutti/team', '/tutti/planning', '/tutti/progetti', '/tutti/kpi', '/tutti/dashboard']) {
     assert.equal(minimumRoleForPath(path), 'pm');
   }
 });

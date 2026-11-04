@@ -116,3 +116,26 @@ test('modalità applicata al cambio account: manager anche super-admin con prefe
   const managerAdmin = { manager: true, platformAdmin: true };
   assert.equal(resolveAggregateMode(managerAdmin, false, '5'), false);
 });
+
+test('toUser raises a member role to pm for a manager in all-teams mode', () => {
+  const manager = { ...ACCOUNT, manager: true };
+  const memberTeam = { id: 9, name: 'Beta', role: 'member' };
+  assert.equal(toUser(manager, memberTeam, true).appRole, 'pm');
+});
+
+test('toUser keeps the team role outside all-teams mode', () => {
+  const manager = { ...ACCOUNT, manager: true };
+  const memberTeam = { id: 9, name: 'Beta', role: 'member' };
+  assert.equal(toUser(manager, memberTeam, false).appRole, 'member');
+});
+
+test('toUser keeps admin in all-teams mode', () => {
+  const manager = { ...ACCOUNT, manager: true };
+  const adminTeam = { id: 4, name: 'Alfa', role: 'admin' };
+  assert.equal(toUser(manager, adminTeam, true).appRole, 'admin');
+});
+
+test('toUser never raises a non-manager in all-teams mode', () => {
+  const memberTeam = { id: 9, name: 'Beta', role: 'member' };
+  assert.equal(toUser(ACCOUNT, memberTeam, true).appRole, 'member');
+});

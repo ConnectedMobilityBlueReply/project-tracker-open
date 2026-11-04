@@ -65,7 +65,7 @@ export function toUser(account: AuthAccount, team: TeamSummary | null, allTeams 
     manager: account.manager === true,
     readOnly: team.read_only === true,
     allTeams: aggregate,
-    appRole: team.role,
+    appRole: aggregate && team.role === 'member' ? 'pm' : team.role,
     teamId: team.id,
     teamName: team.name,
   };

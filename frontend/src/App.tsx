@@ -26,6 +26,7 @@ import TuttiTeam from './pages/tutti/TuttiTeam'
 import TuttiPlanning from './pages/tutti/TuttiPlanning'
 import TuttiProgetti from './pages/tutti/TuttiProgetti'
 import TuttiKpi from './pages/tutti/TuttiKpi'
+import TuttiDashboard from './pages/tutti/TuttiDashboard'
 import Dashboard from './pages/Dashboard'
 import { legacyScheduleTarget } from './lib/planningModel'
 import UpdatesSettings from './pages/settings/UpdatesSettings'
@@ -84,6 +85,7 @@ const ROUTE_ELEMENTS: Record<string, ReactNode> = {
   'tutti/planning': <TuttiPlanning />,
   'tutti/progetti': <TuttiProgetti />,
   'tutti/kpi': <TuttiKpi />,
+  'tutti/dashboard': <TuttiDashboard />,
   'miei-task': <MieiTask />,
   'admin/team': <AdminTeam />,
   'admin/persone': <AdminPersone />,

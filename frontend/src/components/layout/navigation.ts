@@ -82,6 +82,7 @@ export const ALL_TEAMS_NAVIGATION: readonly NavigationItem[] = [
   { to: '/tutti/progetti', label: 'Progetti', shortLabel: 'Progetti', icon: 'projects' },
   { to: '/tutti/kpi', label: 'KPI ed economia', icon: 'kpi' },
   { to: '/business-unit', label: 'Business Unit', shortLabel: 'BU', icon: 'business', mobile: true },
+  { to: '/tutti/dashboard', label: 'Dashboard planning', shortLabel: 'Planning BU', icon: 'dashboard' },
 ];
 
 export const ALL_TEAMS_LABEL = 'Tutti i Team';

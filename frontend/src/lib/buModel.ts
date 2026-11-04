@@ -72,7 +72,7 @@ export interface BuSummary {
   utilization: number | null;
 }
 
-const round2 = (value: number): number => Math.round(value * 100) / 100;
+export const round2 = (value: number): number => Math.round(value * 100) / 100;
 
 /**
  * I giorni scoperti si sommano per settimana: una settimana sovrallocata non

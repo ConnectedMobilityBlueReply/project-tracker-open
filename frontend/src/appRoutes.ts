@@ -42,6 +42,7 @@ export const PROTECTED_ROUTES: readonly ProtectedRoute[] = [
   { path: 'tutti/planning', guardPath: '/tutti/planning', page: 'TuttiPlanning' },
   { path: 'tutti/progetti', guardPath: '/tutti/progetti', page: 'TuttiProgetti' },
   { path: 'tutti/kpi', guardPath: '/tutti/kpi', page: 'TuttiKpi' },
+  { path: 'tutti/dashboard', guardPath: '/tutti/dashboard', page: 'TuttiDashboard' },
   { path: 'miei-task', guardPath: '/miei-task', page: 'MieiTask' },
   { path: 'admin/team', guardPath: '/admin/team', page: 'AdminTeam' },
   { path: 'admin/persone', guardPath: '/admin/persone', page: 'AdminPersone' },

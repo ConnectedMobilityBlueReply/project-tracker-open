@@ -168,7 +168,7 @@ test('Business Unit: serve il flag oltre al ruolo; il default-deny vale per ogni
 });
 
 test('Tutti i Team: le rotte /tutti/* richiedono il flag come la Business Unit', () => {
-  for (const path of ['/tutti/team', '/tutti/planning', '/tutti/progetti', '/tutti/kpi', '/TUTTI/KPI/']) {
+  for (const path of ['/tutti/team', '/tutti/planning', '/tutti/progetti', '/tutti/kpi', '/tutti/dashboard', '/TUTTI/KPI/']) {
     assert.deepEqual(
       resolveAuthGate({ status: 'authenticated', role: 'pm', businessUnit: true, path }),
       { kind: 'allow' },
@@ -182,4 +182,15 @@ test('Tutti i Team: le rotte /tutti/* richiedono il flag come la Business Unit',
       { kind: 'landing', to: '/consuntivazione' },
     );
   }
+});
+
+test('Dashboard planning: /tutti/dashboard richiede il flag manager oltre al ruolo pm', () => {
+  assert.deepEqual(
+    resolveAuthGate({ status: 'authenticated', role: 'pm', businessUnit: true, path: '/tutti/dashboard' }),
+    { kind: 'allow' },
+  );
+  assert.deepEqual(
+    resolveAuthGate({ status: 'authenticated', role: 'pm', path: '/tutti/dashboard' }),
+    { kind: 'landing', to: '/timeline-team' },
+  );
 });

@@ -33,6 +33,7 @@ export const ROUTE_ACCESS: readonly RouteAccessEntry[] = [
   { path: '/tutti/planning', minimumRole: 'pm' },
   { path: '/tutti/progetti', minimumRole: 'pm' },
   { path: '/tutti/kpi', minimumRole: 'pm' },
+  { path: '/tutti/dashboard', minimumRole: 'pm' },
   { path: '/admin/team', minimumRole: 'admin' },
   { path: '/admin/persone', minimumRole: 'admin' },
   { path: '/admin/progetti', minimumRole: 'admin' },
